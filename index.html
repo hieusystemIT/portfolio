@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đào Đức Hiếu | DevOps Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e13;
+    --bg2: #0f1419;
+    --bg3: #161b22;
+    --border: #21262d;
+    --green: #3fb950;
+    --green-dim: #238636;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --accent: #58a6ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--green-dim); border-radius: 2px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,14,19,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex; align-items: center; gap: 4px;
+    height: 52px;
+  }
+  .nav-logo { color: var(--green); font-size: 13px; font-weight: 700; margin-right: auto; letter-spacing: 2px; }
+  .nav-logo span { color: var(--muted); }
+  nav a {
+    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    padding: 6px 14px; border: 1px solid transparent; border-radius: 6px;
+    transition: all 0.2s;
+  }
+  nav a:hover, nav a.active { color: var(--text); border-color: var(--border); }
+  nav a.active { color: var(--green); border-color: var(--green); background: rgba(63,185,80,0.08); }
+
+  /* SECTIONS */
+  section { padding: 80px 0; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+  /* GRID BG */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(63,185,80,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(63,185,80,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* HERO */
+  #home {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding-top: 52px;
+    position: relative;
+    overflow: hidden;
+  }
+  #home::after {
+    content: '';
+    position: absolute; top: 0; right: -200px; bottom: 0;
+    width: 60%;
+    background: radial-gradient(ellipse at 70% 50%, rgba(63,185,80,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-cmd { color: var(--green); font-size: 13px; margin-bottom: 16px; opacity: 0.8; }
+  .hero-cmd::before { content: '$ '; }
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(44px, 7vw, 80px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 16px;
+  }
+  .hero-name .highlight { color: var(--green); }
+  .hero-role {
+    font-size: 13px; color: var(--muted);
+    letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 32px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-role span { color: var(--green); }
+  .intro-box {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--green);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    max-width: 640px;
+  }
+  .intro-label { color: var(--green); font-size: 12px; margin-bottom: 10px; }
+  .intro-text { font-size: 13px; color: var(--muted); line-height: 1.8; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 200px; gap: 40px; align-items: start; }
+  .tag-list { display: flex; flex-direction: column; gap: 8px; padding-top: 40px; }
+  .tag-pill {
+    font-size: 11px; letter-spacing: 1px;
+    padding: 7px 16px; border: 1px solid var(--border);
+    border-radius: 20px; color: var(--muted); text-align: center;
+    transition: all 0.2s; cursor: default;
+  }
+  .tag-pill:hover { border-color: var(--green); color: var(--green); }
+  .btn-row { display: flex; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+    padding: 11px 24px; background: var(--green); color: #0a0e13;
+    border: none; border-radius: 6px; font-weight: 700; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: #58d168; transform: translateY(-1px); }
+  .btn-secondary {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+    padding: 11px 24px; background: transparent; color: var(--text);
+    border: 1px solid var(--border); border-radius: 6px; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--green); color: var(--green); transform: translateY(-1px); }
+  .stats { display: flex; gap: 48px; }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; color: var(--green); }
+  .stat-lbl { font-size: 10px; color: var(--muted); letter-spacing: 2px; margin-top: 2px; }
+
+  /* SECTION HEADER */
+  .sec-cmd { font-size: 12px; color: var(--green); margin-bottom: 10px; letter-spacing: 1px; }
+  .sec-title { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; margin-bottom: 40px; }
+
+  /* SKILLS */
+  #skills { background: var(--bg2); }
+  .skill-row { margin-bottom: 28px; }
+  .skill-cat {
+    font-size: 11px; color: var(--green); letter-spacing: 2px;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .skill-cat::before { content: '>'; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .stag {
+    font-size: 12px; padding: 7px 14px;
+    border: 1px solid var(--border); border-radius: 6px;
+    color: #c9d1d9; background: var(--bg3);
+    transition: all 0.15s; cursor: default;
+  }
+  .stag:hover { border-color: var(--green); color: var(--green); background: rgba(63,185,80,0.06); }
+
+  /* EXPERIENCE */
+  #experience { background: var(--bg); }
+  .exp-list { position: relative; padding-left: 28px; }
+  .exp-list::before {
+    content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+    width: 2px; background: linear-gradient(to bottom, var(--green), transparent);
+  }
+  .exp-item { position: relative; margin-bottom: 40px; }
+  .exp-item::before {
+    content: ''; width: 10px; height: 10px;
+    background: var(--green); border-radius: 50%;
+    position: absolute; left: -33px; top: 5px;
+    box-shadow: 0 0 10px rgba(63,185,80,0.5);
+  }
+  .exp-company { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .exp-meta { font-size: 11px; color: var(--green); letter-spacing: 1px; margin-bottom: 12px; }
+  .exp-meta span { color: var(--muted); margin-left: 12px; }
+  .exp-desc { font-size: 13px; color: var(--muted); line-height: 1.8; }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .exp-tag {
+    font-size: 11px; padding: 3px 10px;
+    border: 1px solid var(--green-dim); border-radius: 4px;
+    color: var(--green); background: rgba(35,134,54,0.1);
+  }
+
+  /* PROJECTS */
+  #projects { background: var(--bg2); }
+  .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .proj-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 10px; padding: 24px;
+    transition: all 0.2s; cursor: default;
+    position: relative; overflow: hidden;
+  }
+  .proj-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--green), transparent);
+    opacity: 0; transition: opacity 0.2s;
+  }
+  .proj-card:hover { border-color: var(--green-dim); transform: translateY(-2px); }
+  .proj-card:hover::before { opacity: 1; }
+  .proj-num { font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+  .proj-title { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .proj-desc { font-size: 12px; color: var(--muted); line-height: 1.7; margin-bottom: 16px; }
+  .proj-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+  .proj-stag {
+    font-size: 10px; padding: 3px 8px;
+    border: 1px solid var(--border); border-radius: 4px;
+    color: var(--muted);
+  }
+
+  /* CONTACT */
+  #contact { background: var(--bg); }
+  .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 600px; }
+  .contact-card {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px;
+    display: flex; align-items: center; gap: 16px;
+    text-decoration: none; color: var(--text);
+    transition: all 0.2s;
+  }
+  .contact-card:hover { border-color: var(--green); transform: translateY(-2px); }
+  .c-icon { font-size: 22px; color: var(--green); }
+  .c-label { font-size: 10px; color: var(--muted); letter-spacing: 1.5px; margin-bottom: 4px; }
+  .c-val { font-size: 13px; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 40px;
+    text-align: center;
+    font-size: 11px; color: var(--muted);
+  }
+  footer span { color: var(--green); }
+
+  /* CURSOR BLINK */
+  .blink { animation: blink 1s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* TYPING ANIMATION */
+  .typing { overflow: hidden; white-space: nowrap; animation: typing 1.5s steps(10, end) forwards; }
+  @keyframes typing { from { width: 0; } to { width: 100%; } }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 16px; }
+    .container { padding: 0 20px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .tag-list { flex-direction: row; flex-wrap: wrap; padding-top: 0; }
+    .contact-grid { grid-template-columns: 1fr; }
+    nav a { padding: 4px 8px; font-size: 10px; }
+  }
+</style>
+</head>
+<body class="grid-bg">
+
+<nav>
+  <div class="nav-logo">DDH<span>.</span></div>
+  <a href="#home" class="active">Home</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-cmd">whoami</div>
+        <h1 class="hero-name">ĐÀO ĐỨC<br><span class="highlight">HIẾU</span></h1>
+        <div class="hero-role">
+          DevOps Engineer <span>·</span> Infrastructure <span>·</span> Cloud
+        </div>
+        <div class="intro-box">
+          <div class="intro-label">// 01_introduction</div>
+          <div class="intro-text">
+            DevOps Engineer với kinh nghiệm vận hành hạ tầng on-prem và cloud.<br>
+            Chuyên về containerization, CI/CD pipeline, monitoring và automation.<br>
+            Thành thạo Kubernetes, Docker, AWS, Jenkins và hệ sinh thái DevOps.
+          </div>
+        </div>
+        <div class="btn-row">
+          <a href="#contact" class="btn-primary">CONTACT ME</a>
+          <a href="https://www.linkedin.com/in/%C4%91%E1%BB%A9c-hi%E1%BA%BFu-911176302/" target="_blank" class="btn-secondary">LINKEDIN</a>
+        </div>
+        <div class="stats">
+          <div><div class="stat-num">2+</div><div class="stat-lbl">YRS EXPERIENCE</div></div>
+          <div><div class="stat-num">10+</div><div class="stat-lbl">PROJECTS</div></div>
+          <div><div class="stat-num">15+</div><div class="stat-lbl">TOOLS</div></div>
+        </div>
+      </div>
+      <div class="tag-list">
+        <span class="tag-pill">Kubernetes</span>
+        <span class="tag-pill">Docker</span>
+        <span class="tag-pill">Jenkins</span>
+        <span class="tag-pill">AWS</span>
+        <span class="tag-pill">GKE</span>
+        <span class="tag-pill">ArgoCD</span>
+        <span class="tag-pill">Grafana</span>
+        <span class="tag-pill">Terraform</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="sec-cmd">// 02_SKILLS</div>
+    <h2 class="sec-title">Technical Stack</h2>
+
+    <div class="skill-row">
+      <div class="skill-cat">OPERATING SYSTEMS</div>
+      <div class="tags">
+        <span class="stag">Linux (Ubuntu/CentOS)</span>
+        <span class="stag">Windows Server</span>
+        <span class="stag">VMware vSphere</span>
+      </div>
+    </div>
+
+    <div class="skill-row">
+      <div class="skill-cat">CONTAINER & ORCHESTRATION</div>
+      <div class="tags">
+        <span class="stag">Docker</span>
+        <span class="stag">Kubernetes</span>
+        <span class="stag">GKE</span>
+        <span class="stag">Helm</span>
+        <span class="stag">ArgoCD</span>
+      </div>
+    </div>
+
+    <div class="skill-row">
+      <div class="skill-cat">CLOUD & INFRASTRUCTURE</div>
+      <div class="tags">
+        <span class="stag">AWS</span>
+        <span class="stag">GCP</span>
+        <span class="stag">Terraform</span>
+        <span class="stag">Ansible</span>
+        <span class="stag">Load Balancer</span>
+        <span class="stag">HA Cluster</span>
+        <span class="stag">Keepalived</span>
+        <span class="stag">VIP IP</span>
+      </div>
+    </div>
+
+    <div class="skill-row">
+      <div class="skill-cat">CI/CD & TOOLS</div>
+      <div class="tags">
+        <span class="stag">Jenkins</span>
+        <span class="stag">ArgoCD</span>
+        <span class="stag">Git</span>
+        <span class="stag">GitLab CI</span>
+        <span class="stag">Jira</span>
+        <span class="stag">Confluent</span>
+      </div>
+    </div>
+
+    <div class="skill-row">
+      <div class="skill-cat">MONITORING & LOGGING</div>
+      <div class="tags">
+        <span class="stag">Prometheus</span>
+        <span class="stag">Grafana</span>
+        <span class="stag">Elasticsearch</span>
+        <span class="stag">Logstash</span>
+        <span class="stag">Kibana</span>
+        <span class="stag">AlertManager</span>
+      </div>
+    </div>
+
+    <div class="skill-row">
+      <div class="skill-cat">NETWORKING & SECURITY</div>
+      <div class="tags">
+        <span class="stag">Nginx</span>
+        <span class="stag">PfSense</span>
+        <span class="stag">Cloud Firewall</span>
+        <span class="stag">VPN</span>
+        <span class="stag">TCP/IP</span>
+        <span class="stag">DNS</span>
+      </div>
+    </div>
+
+    <div class="skill-row">
+      <div class="skill-cat">DATABASES</div>
+      <div class="tags">
+        <span class="stag">PostgreSQL</span>
+        <span class="stag">MariaDB</span>
+        <span class="stag">MongoDB</span>
+        <span class="stag">Cassandra</span>
+        <span class="stag">Redis</span>
+        <span class="stag">RabbitMQ</span>
+      </div>
+    </div>
+
+    <div class="skill-row">
+      <div class="skill-cat">PROGRAMMING & SCRIPTING</div>
+      <div class="tags">
+        <span class="stag">Bash Script</span>
+        <span class="stag">Shell Script</span>
+        <span class="stag">Python</span>
+        <span class="stag">SQL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="sec-cmd">// 03_EXPERIENCE</div>
+    <h2 class="sec-title">Work Experience</h2>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-company">DevOps Engineer</div>
+        <div class="exp-meta">2023 – PRESENT <span>· Công ty (cập nhật tên)</span></div>
+        <div class="exp-desc">
+          Quản lý và vận hành Kubernetes cluster (on-prem & GKE). Xây dựng CI/CD pipeline với Jenkins và ArgoCD.
+          Thiết lập monitoring stack Prometheus + Grafana + AlertManager. Tự động hóa provisioning với Ansible và Terraform.
+          Quản lý hạ tầng HA cluster, cấu hình Load Balancer, VIP IP, Keepalived.
+        </div>
+        <div class="exp-tags">
+          <span class="exp-tag">Kubernetes</span>
+          <span class="exp-tag">Jenkins</span>
+          <span class="exp-tag">ArgoCD</span>
+          <span class="exp-tag">AWS</span>
+          <span class="exp-tag">Terraform</span>
+          <span class="exp-tag">Ansible</span>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-company">System Engineer</div>
+        <div class="exp-meta">2022 – 2023 <span>· Công ty (cập nhật tên)</span></div>
+        <div class="exp-desc">
+          Vận hành hạ tầng on-prem Linux, VMware vSphere. Cấu hình Nginx reverse proxy, Firewall PfSense.
+          Triển khai Docker, ELK Stack cho logging tập trung. Quản lý database MariaDB, MongoDB cluster.
+          Viết automation script Bash/Python cho backup & restore, system monitoring.
+        </div>
+        <div class="exp-tags">
+          <span class="exp-tag">Linux</span>
+          <span class="exp-tag">Docker</span>
+          <span class="exp-tag">Nginx</span>
+          <span class="exp-tag">ELK Stack</span>
+          <span class="exp-tag">MariaDB</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-cmd">// 04_PROJECTS</div>
+    <h2 class="sec-title">Featured Projects</h2>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-num">01 / PROJECT</div>
+        <div class="proj-title">K8s Cluster On-Prem</div>
+        <div class="proj-desc">Triển khai và vận hành Kubernetes cluster on-premise với HA, monitoring Prometheus/Grafana, auto-scaling và GitOps ArgoCD.</div>
+        <div class="proj-stack">
+          <span class="proj-stag">Kubernetes</span>
+          <span class="proj-stag">ArgoCD</span>
+          <span class="proj-stag">Prometheus</span>
+          <span class="proj-stag">Helm</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">02 / PROJECT</div>
+        <div class="proj-title">CI/CD Pipeline Automation</div>
+        <div class="proj-desc">Xây dựng pipeline Jenkins end-to-end: build, test, scan security, deploy tự động lên môi trường staging và production.</div>
+        <div class="proj-stack">
+          <span class="proj-stag">Jenkins</span>
+          <span class="proj-stag">Docker</span>
+          <span class="proj-stag">Git</span>
+          <span class="proj-stag">ArgoCD</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">03 / PROJECT</div>
+        <div class="proj-title">Centralized Logging ELK</div>
+        <div class="proj-desc">Triển khai ELK Stack cho hệ thống logging tập trung, dashboard Kibana, alert tự động khi có lỗi bất thường.</div>
+        <div class="proj-stack">
+          <span class="proj-stag">Elasticsearch</span>
+          <span class="proj-stag">Logstash</span>
+          <span class="proj-stag">Kibana</span>
+          <span class="proj-stag">AlertManager</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">04 / PROJECT</div>
+        <div class="proj-title">Infrastructure as Code</div>
+        <div class="proj-desc">Tự động hóa provisioning hạ tầng AWS với Terraform, configuration management với Ansible playbook.</div>
+        <div class="proj-stack">
+          <span class="proj-stag">Terraform</span>
+          <span class="proj-stag">Ansible</span>
+          <span class="proj-stag">AWS</span>
+          <span class="proj-stag">GKE</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-cmd">// 05_CONTACT</div>
+    <h2 class="sec-title">Get In Touch</h2>
+    <div class="contact-grid">
+      <a href="mailto:duchieu2460@gmail.com" class="contact-card">
+        <div class="c-icon">✉</div>
+        <div><div class="c-label">EMAIL</div><div class="c-val">duchieu2460@gmail.com</div></div>
+      </a>
+      <a href="https://www.linkedin.com/in/%C4%91%E1%BB%A9c-hi%E1%BA%BFu-911176302/" target="_blank" class="contact-card">
+        <div class="c-icon">in</div>
+        <div><div class="c-label">LINKEDIN</div><div class="c-val">Đức Hiếu</div></div>
+      </a>
+      <a href="#" class="contact-card">
+        <div class="c-icon">gh</div>
+        <div><div class="c-label">GITHUB</div><div class="c-val">github.com/duchieu2460</div></div>
+      </a>
+      <div class="contact-card">
+        <div class="c-icon">📍</div>
+        <div><div class="c-label">LOCATION</div><div class="c-val">Hà Nội, Việt Nam</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>Đào Đức Hiếu</span> · Built with ❤ · DevOps Engineer</p>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+</body>
+</html>
