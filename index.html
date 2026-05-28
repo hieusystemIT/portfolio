@@ -111,11 +111,16 @@
   }
   .intro-label { color: var(--green); font-size: 12px; margin-bottom: 10px; }
   .intro-text { font-size: 13px; color: var(--muted); line-height: 1.8; }
-  .hero-grid { display: grid; grid-template-columns: 1fr 200px; gap: 40px; align-items: start; }
-  .tag-list { display: flex; flex-direction: column; gap: 8px; padding-top: 0; align-items: center; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 260px; gap: 40px; align-items: start; }
+  .tag-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+  }
   .tag-pill {
     font-size: 11px; letter-spacing: 1px;
-    padding: 7px 16px; border: 1px solid var(--border);
+    padding: 7px 10px; border: 1px solid var(--border);
     border-radius: 20px; color: var(--muted); text-align: center;
     transition: all 0.2s; cursor: default;
   }
@@ -297,7 +302,7 @@
         </div>
       </div>
       <div class="tag-list">
-        <div style="text-align:center; margin-bottom: 8px;">
+        <div style="text-align:center; margin-bottom: 8px; grid-column: 1 / -1;">
           <img src="avatar.jpg"
                style="width:150px; height:150px; border-radius:50%;
                       border: 2px solid #3fb950; object-fit:cover; display:block; margin:0 auto 10px;">
@@ -326,11 +331,16 @@
     <h2 class="sec-title">Technical Stack</h2>
 
     <div class="skill-row">
-      <div class="skill-cat">OPERATING SYSTEMS</div>
+      <div class="skill-cat">CLOUD & INFRASTRUCTURE</div>
       <div class="tags">
-        <span class="stag">Linux (Ubuntu/CentOS)</span>
-        <span class="stag">Windows Server</span>
-        <span class="stag">VMware vSphere</span>
+        <span class="stag">AWS</span>
+        <span class="stag">GCP</span>
+        <span class="stag">Terraform</span>
+        <span class="stag">Terragrunt</span>
+        <span class="stag">Ansible</span>
+        <span class="stag">Load Balancer</span>
+        <span class="stag">HA Cluster</span>
+        <span class="stag">Keepalived</span>
       </div>
     </div>
 
@@ -342,19 +352,6 @@
         <span class="stag">GKE</span>
         <span class="stag">Helm</span>
         <span class="stag">ArgoCD</span>
-      </div>
-    </div>
-
-    <div class="skill-row">
-      <div class="skill-cat">CLOUD & INFRASTRUCTURE</div>
-      <div class="tags">
-        <span class="stag">AWS</span>
-        <span class="stag">GCP</span>
-        <span class="stag">Terraform</span>
-        <span class="stag">Ansible</span>
-        <span class="stag">Load Balancer</span>
-        <span class="stag">HA Cluster</span>
-        <span class="stag">Keepalived</span>
       </div>
     </div>
 
@@ -408,6 +405,15 @@
     </div>
 
     <div class="skill-row">
+      <div class="skill-cat">OPERATING SYSTEMS</div>
+      <div class="tags">
+        <span class="stag">Linux (Ubuntu/CentOS)</span>
+        <span class="stag">Windows Server</span>
+        <span class="stag">VMware vSphere</span>
+      </div>
+    </div>
+
+    <div class="skill-row">
       <div class="skill-cat">PROGRAMMING & SCRIPTING</div>
       <div class="tags">
         <span class="stag">Bash Script</span>
@@ -428,7 +434,7 @@
 
       <div class="exp-item">
         <div class="exp-company">DevOps Engineer</div>
-        < div class="exp-meta">05/2026 – Nay <span>· Công ty Cổ phần Thanh toán G (G-Pay) · Hà Nội</span></div>
+        <div class="exp-meta">/05/2026 – Nay <span>· Công ty Cổ phần Thanh toán G (G-Pay) · Hà Nội</span></div>
         <div class="exp-desc">
           Triển khai, quản lý hạ tầng cloud với Google Cloud (GKE, SFTP, network, IAM).<br>
           Xây dựng, quản lý hệ thống IaC với Terraform, Terragrunt, Ansible.<br>
@@ -445,20 +451,23 @@
           <span class="exp-tag">Helm</span>
           <span class="exp-tag">ArgoCD</span>
           <span class="exp-tag">SFTP</span>
+          <span class="exp-tag">Telethon</span>
         </div>
       </div>
 
       <div class="exp-item">
-        <div class="exp-company">Nhân viên Quản trị hệ thống</div>
+        <div class="exp-company">SysOps Engineer</div>
         <div class="exp-meta">02/2025 – 05/2026 <span>· Công ty Cổ phần PayTech · Cầu Giấy, Hà Nội</span></div>
         <div class="exp-desc">
-          Quản trị, vận hành hệ thống app Mypoint – Mobifone, giám sát, xử lý sự cố, phối hợp Dev fix bug.<br>
+          Quản trị, vận hành hệ thống app tích điểm Mypoint – Mobifone, giám sát, xử lý sự cố.<br>
           Xây dựng hệ thống giám sát Grafana – Prometheus, triển khai cảnh báo tự động.<br>
           Cài đặt, cấu hình Nginx Proxy, Firewall, vSphere, Supervisor.<br>
           Quản trị Database Cluster & Replication (MariaDB, MongoDB, Cassandra).<br>
           Quản lý hệ thống SIEM – ELK, Backup/Deploy code & data, viết Shell Script Automation.<br>
           Triển khai Jenkins CI/CD, tự động hóa build & deploy.<br>
-          Backup định kỳ DB, service, iptables lên S3, đảm bảo an toàn dữ liệu.
+          Backup định kỳ và kiểm tra restore dữ liệu, đảm bảo an toàn thông tin hệ thống.
+          Triển khai các dự án VAS, SMS, Email Marketing, tích điểm cho Mobifone.
+          HA Keepalive, Nginx Proxy, Relication MariaDB.
         </div>
         <div class="exp-tags">
           <span class="exp-tag">Grafana</span>
@@ -472,20 +481,24 @@
           <span class="exp-tag">MongoDB</span>
           <span class="exp-tag">Cassandra</span>
           <span class="exp-tag">Shell Script</span>
+          <span class="exp-tag">Wazuh</span>
+          <span class="exp-tag">Replication</span>
         </div>
       </div>
 
       <div class="exp-item">
-        <div class="exp-company">Nhân viên Quản trị hệ thống</div>
-        <div class="exp-meta">2022 – 02/2025 <span>· Công ty S-Connect Việt Nam · Hà Nội</span></div>
+        <div class="exp-company">System Administrator</div>
+        <div class="exp-meta">2022 – 02/2025 <span>· Công ty TNHH đầu tư công nghệ và dịch vụ Sconnect Việt Nam · Hà Nội</span></div>
         <div class="exp-desc">
-          Triển khai và quản lý VMWare ESXI, setup server AWS và cài đặt các service trên server (Linux).<br>
+          Triển khai và quản lý VMWare ESXI.<br>
+          Triển khai và deploy dự án mô hình LEMP (Linux, Nginx, MariaDB/MySQL, PHP) cho nội bộ nhân sự.<br>
           Cài đặt, phân quyền cho các dự án sử dụng PHP, Nginx, MariaDB, MySQL.<br>
-          Quản lý các domain trên Cloudflare, triển khai hệ thống NAS Server/Synology.<br>
+          Quản lý các domain trên Cloudflare, cấu hình DNS, SSL.<br>
+          Triển khai hệ thống NAS Server/Synology.<br>
           Quản lý hệ thống Google Workspace, VPS Server, thiết bị Draytek, wifi Aruba.<br>
           Cài đặt và triển khai hệ thống theo dõi Prometheus, Grafana, Zabbix.<br>
-          Sử dụng các service AWS: EC2, IAM, Cloudwatch, Lightsail.<br>
-          Triển khai Gitlab-serve.
+          Service AWS: EC2, IAM, Cloudwatch, Lightsail.<br>
+          Triển khai Gitlab-server.
         </div>
         <div class="exp-tags">
           <span class="exp-tag">VMWare ESXI</span>
@@ -493,7 +506,6 @@
           <span class="exp-tag">Linux</span>
           <span class="exp-tag">Nginx</span>
           <span class="exp-tag">MariaDB</span>
-          <span class="exp-tag">MySQL</span>
           <span class="exp-tag">Cloudflare</span>
           <span class="exp-tag">NAS</span>
           <span class="exp-tag">Prometheus</span>
@@ -580,9 +592,9 @@
         <div class="c-icon">in</div>
         <div><div class="c-label">LINKEDIN</div><div class="c-val">Đức Hiếu</div></div>
       </a>
-      <a href="#" class="contact-card">
+      <a href="https://github.com/hieusystemIT" target="_blank" class="contact-card">
         <div class="c-icon">gh</div>
-        <div><div class="c-label">GITHUB</div><div class="c-val">github.com/duchieu2460</div></div>
+        <div><div class="c-label">GITHUB</div><div class="c-val">https://github.com/hieusystemIT</div></div>
       </a>
       <div class="contact-card">
         <div class="c-icon">📍</div>
