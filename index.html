@@ -90,6 +90,7 @@
     line-height: 1.05;
     letter-spacing: -2px;
     margin-bottom: 16px;
+    white-space: nowrap;
   }
   .hero-name .highlight { color: var(--green); }
   .hero-role {
@@ -424,36 +425,78 @@
 
       <div class="exp-item">
         <div class="exp-company">DevOps Engineer</div>
-        <div class="exp-meta">2053 – PRESENT <span>· Công ty PayTech JSC · Cau Giay, Ha Noi</span></div>
+        < div class="exp-meta">05/2026 – Nay <span>· Công ty Cổ phần Thanh toán G (G-Pay) · Hà Nội</span></div>
         <div class="exp-desc">
-          Quản lý và vận hành Kubernetes cluster (on-prem & GKE). Xây dựng CI/CD pipeline với Jenkins và ArgoCD.
-          Thiết lập monitoring stack Prometheus + Grafana + AlertManager. Tự động hóa provisioning với Ansible và Terraform.
-          Quản lý hạ tầng HA cluster, cấu hình Load Balancer, VIP IP, Keepalived.
+          Triển khai, quản lý hạ tầng cloud với Google Cloud (GKE, SFTP, network, IAM).<br>
+          Xây dựng, quản lý hệ thống IaC với Terraform, Terragrunt, Ansible.<br>
+          Vận hành, triển khai Kubernetes, Helm/Charts, ArgoCD cho CI/CD, tự động hóa deploy.<br>
+          Thiết lập, giám sát bảo mật, backup, restore hệ thống, tối ưu chi phí cloud.
         </div>
         <div class="exp-tags">
-          <span class="exp-tag">Kubernetes</span>
-          <span class="exp-tag">Jenkins</span>
-          <span class="exp-tag">ArgoCD</span>
-          <span class="exp-tag">AWS</span>
           <span class="exp-tag">Terraform</span>
+          <span class="exp-tag">Terragrunt</span>
+          <span class="exp-tag">GKE</span>
+          <span class="exp-tag">Google Cloud</span>
           <span class="exp-tag">Ansible</span>
+          <span class="exp-tag">Kubernetes</span>
+          <span class="exp-tag">Helm</span>
+          <span class="exp-tag">ArgoCD</span>
+          <span class="exp-tag">SFTP</span>
         </div>
       </div>
 
       <div class="exp-item">
-        <div class="exp-company">System Engineer</div>
-        <div class="exp-meta">2022 – 2025 <span>· Công ty Sconnect · Hanoi, Vietnam</span></div>
+        <div class="exp-company">Nhân viên Quản trị hệ thống</div>
+        <div class="exp-meta">02/2025 – 05/2026 <span>· Công ty Cổ phần PayTech · Cầu Giấy, Hà Nội</span></div>
         <div class="exp-desc">
-          Vận hành hạ tầng on-prem Linux, VMware vSphere. Cấu hình Nginx reverse proxy, Firewall PfSense.
-          Triển khai Docker, ELK Stack cho logging tập trung. Quản lý database MariaDB, MongoDB cluster.
-          Viết automation script Bash/Python cho backup & restore, system monitoring.
+          Quản trị, vận hành hệ thống app Mypoint – Mobifone, giám sát, xử lý sự cố, phối hợp Dev fix bug.<br>
+          Xây dựng hệ thống giám sát Grafana – Prometheus, triển khai cảnh báo tự động.<br>
+          Cài đặt, cấu hình Nginx Proxy, Firewall, vSphere, Supervisor.<br>
+          Quản trị Database Cluster & Replication (MariaDB, MongoDB, Cassandra).<br>
+          Quản lý hệ thống SIEM – ELK, Backup/Deploy code & data, viết Shell Script Automation.<br>
+          Triển khai Jenkins CI/CD, tự động hóa build & deploy.<br>
+          Backup định kỳ DB, service, iptables lên S3, đảm bảo an toàn dữ liệu.
         </div>
         <div class="exp-tags">
-          <span class="exp-tag">Linux</span>
-          <span class="exp-tag">Docker</span>
-          <span class="exp-tag">Nginx</span>
+          <span class="exp-tag">Grafana</span>
+          <span class="exp-tag">Prometheus</span>
           <span class="exp-tag">ELK Stack</span>
+          <span class="exp-tag">Supervisor</span>
+          <span class="exp-tag">Keepalived</span>
+          <span class="exp-tag">Nginx</span>
+          <span class="exp-tag">Jenkins</span>
           <span class="exp-tag">MariaDB</span>
+          <span class="exp-tag">MongoDB</span>
+          <span class="exp-tag">Cassandra</span>
+          <span class="exp-tag">Shell Script</span>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-company">Nhân viên Quản trị hệ thống</div>
+        <div class="exp-meta">2022 – 02/2025 <span>· Công ty S-Connect Việt Nam · Hà Nội</span></div>
+        <div class="exp-desc">
+          Triển khai và quản lý VMWare ESXI, setup server AWS và cài đặt các service trên server (Linux).<br>
+          Cài đặt, phân quyền cho các dự án sử dụng PHP, Nginx, MariaDB, MySQL.<br>
+          Quản lý các domain trên Cloudflare, triển khai hệ thống NAS Server/Synology.<br>
+          Quản lý hệ thống Google Workspace, VPS Server, thiết bị Draytek, wifi Aruba.<br>
+          Cài đặt và triển khai hệ thống theo dõi Prometheus, Grafana, Zabbix.<br>
+          Sử dụng các service AWS: EC2, IAM, Cloudwatch, Lightsail.<br>
+          Triển khai Gitlab-serve.
+        </div>
+        <div class="exp-tags">
+          <span class="exp-tag">VMWare ESXI</span>
+          <span class="exp-tag">AWS</span>
+          <span class="exp-tag">Linux</span>
+          <span class="exp-tag">Nginx</span>
+          <span class="exp-tag">MariaDB</span>
+          <span class="exp-tag">MySQL</span>
+          <span class="exp-tag">Cloudflare</span>
+          <span class="exp-tag">NAS</span>
+          <span class="exp-tag">Prometheus</span>
+          <span class="exp-tag">Grafana</span>
+          <span class="exp-tag">Zabbix</span>
+          <span class="exp-tag">Gitlab</span>
         </div>
       </div>
 
